@@ -1,5 +1,5 @@
 import uuid
-from click import prompt
+from pathlib import Path
 import streamlit as st
 from streamlit_image_zoom import image_zoom
 from PIL import Image
@@ -9,7 +9,8 @@ from plantuml import PlantUML # https://github.com/vgilabert94/streamlit-image-z
 
 plantuml_server = PlantUML(url="http://www.plantuml.com/plantuml/img/") # Public PlantUML server (you can also host your own)
 out_folder = "out"
-
+# Create folder if it does not exist
+out_folder.mkdir(parents=True, exist_ok=True)
 
 def display_past_values(image_path, python_diagram_code):
     st.session_state.image_path = image_path

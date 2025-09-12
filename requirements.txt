@@ -1,0 +1,20 @@
+streamlit
+langgraph
+langchain-openai
+langchain-groq
+plantuml
+streamlit-image-zoom
+
+## create env
+# uv venv --python 3.12
+
+## activate env
+# Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+# .venv\Scripts\Activate.ps1
+
+## install dependencies
+# uv pip install -r requirements.txt
+
+# https://arxiv.org/pdf/2503.06706
+# https://github.com/KongLongGeFDU/PFDial/tree/main
+# https://www.linkedin.com/learning/case-study-visualize-complex-microservice-data-using-python

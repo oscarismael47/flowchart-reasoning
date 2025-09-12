@@ -1,0 +1,48 @@
+@startuml
+start
+:Get shopping cart information and calculate discounts;
+
+:Get member shipping address list from ums_member_receive_address table;
+:Get all coupon information for this member;
+
+repeat
+  :Determine whether each coupon is usable based on use_type;
+
+  if (Universal coupon?) then (Yes)
+    if (Total amount of all products >= minimum threshold?) then (Yes)
+      :Add to user's available coupon list;
+    else (No)
+      :Add to user's unavailable coupon list;
+      stop
+    endif
+  else (No)
+    if (Specific category?) then (Yes)
+      if (Category total >= minimum threshold?) then (Yes)
+        :Add to user's available coupon list;
+      else (No)
+        :Add to user's unavailable coupon list;
+        stop
+      endif
+    else (No)
+      if (Specific product?) then (Yes)
+        if (Product total >= minimum threshold?) then (Yes)
+          :Add to user's available coupon list;
+        else (No)
+          :Add to user's unavailable coupon list;
+          stop
+        endif
+      else (No)
+        :No available coupons;
+        stop
+      endif
+    endif
+  endif
+repeat while (All coupons processed?) is (Not completed) not (Completed)
+
+:Get user's available coupon list;
+:Get user's points;
+:Get points usage rules;
+
+:Calculate total amount, activity discounts, and payable amount;
+stop
+@enduml

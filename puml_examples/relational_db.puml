@@ -1,0 +1,41 @@
+@startuml
+!theme plain
+
+entity "User" as user {
+  * user_id : UUID <<PK>>
+  --
+  name : String
+  email : String
+}
+
+entity "Order" as order {
+  * order_id : UUID <<PK>>
+  --
+  order_date : Date
+  total_amount : Decimal
+  user_id : UUID <<FK>>
+}
+
+entity "Product" as product {
+  * product_id : UUID <<PK>>
+  --
+  name : String
+  description : String
+  price : Decimal
+  stock_quantity : Int
+}
+
+entity "OrderItem" as order_item {
+  * order_item_id : UUID <<PK>>
+  --
+  order_id : UUID <<FK>>
+  product_id : UUID <<FK>>
+  quantity : Int
+  unit_price : Decimal
+}
+
+' Relationships
+user ||--o{ order : places
+order ||--o{ order_item : contains
+product ||--o{ order_item : included in
+@enduml

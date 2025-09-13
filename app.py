@@ -54,12 +54,10 @@ with st.sidebar:
                                 file_type=["jpg", "jpeg", "png", "puml"],
                             )
 
-
     if user_input:     
 
         user_metadata = {}
         assistant_metadata = {}
-
 
         if  user_input.text:
             message = user_input.text
@@ -86,7 +84,6 @@ with st.sidebar:
                            plantuml_code=st.session_state.uml_code,
                            image_path=st.session_state.image_path,
                            thread_id=st.session_state.chat_id)
-        
 
         st.session_state.messages.append({"role": "user", "content": message,"metadata": user_metadata})
         st.session_state.messages.append({"role": "assistant", "content": response, "metadata": assistant_metadata})

@@ -98,9 +98,9 @@ builder.add_edge("tools", "assistant")
 # Checkpointer for short-term (within-thread) memory
 within_thread_memory = MemorySaver()
 graph = builder.compile(checkpointer=within_thread_memory)
-graph_image = graph.get_graph(xray=True).draw_mermaid_png()
-with open("graph.png", "wb") as f:
-    f.write(graph_image)
+#graph_image = graph.get_graph(xray=True).draw_mermaid_png()
+#with open("graph.png", "wb") as f:
+#    f.write(graph_image)
 
 if __name__ == "__main__":
     file_path = "puml_examples/flow_1.puml"
